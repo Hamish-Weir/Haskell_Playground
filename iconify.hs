@@ -1,3 +1,38 @@
+-- (20 points) [UseModels] This problem is about the type WindowLayout, which is defined as follows.
+-- data WindowLayout = Window {wname :: String, width :: Int, height :: Int}
+-- | Horizontal [WindowLayout]
+-- | Vertical [WindowLayout]
+-- In Haskell, write a function
+-- iconify :: WindowLayout -> WindowLayout
+-- that takes a 〈WindowLayout〉, wl, and returns a 〈WindowLayout〉 that is just like wl, except that in each
+-- 〈Window〉 record, the value of each width and height field is replaced by 1. The following are
+-- examples using the Testing module from the homework.
+
+-- tests :: [TestCase WindowLayout]
+-- tests =
+-- [eqTest (iconify Window {wname="castle", width=1280, height=740})
+-- "==" (Window {wname="castle", width=1, height=1})
+-- ,eqTest (iconify (Horizontal [Window {wname="castle", width=1280, height=740},
+-- Window {wname="bball", width=900, height=900}]))
+-- "==" (Horizontal [Window {wname="castle", width=1, height=1},
+-- Window {wname="bball", width=1, height=1}])
+-- ,eqTest (iconify (Vertical [])) "==" (Vertical [])
+-- ,eqTest (iconify (Horizontal [])) "==" (Horizontal [])
+-- ,eqTest (iconify (Vertical [Horizontal [Window {wname="castle", width=1280, height=740},
+-- Window {wname="bball", width=900, height=900}],
+-- Vertical [Window {wname="csi", width=1000, height=500}]]))
+-- "==" (Vertical [Horizontal [Window {wname="castle", width=1, height=1},
+-- Window {wname="bball", width=1, height=1}],
+-- Vertical [Window {wname="csi", width=1, height=1}]])
+-- ,eqTest (iconify (Horizontal [Vertical [Window {wname="csi", width=1280, height=740},
+-- Window {wname="daily", width=900, height=900}],
+-- Horizontal [Window {wname="news", width=1000, height=500},
+-- Horizontal [Window {wname="pbs", width=800,height=400}]]]))
+-- "==" (Horizontal [Vertical [Window {wname="csi", width=1, height=1},
+-- Window {wname="daily", width=1, height=1}],
+-- Horizontal [Window {wname="news", width=1, height=1},
+-- Horizontal [Window {wname="pbs", width=1,height=1}]]]) ]
+-- Be sure to follow the grammar!
 
 data WindowLayout = Window {wname :: String, width :: Int, height :: Int}
  | Horizontal [WindowLayout]
